@@ -7,7 +7,8 @@ class Funzzy < Formula
   homepage "https://github.com/cristianoliveira/funzzy"
   url "https://github.com/cristianoliveira/funzzy/releases/download/v0.3.0/funzzy-v0.3.0-x86_64-apple-darwin.tar.gz"
   version "0.3.0"
-  sha256 "b34ee2d8339a54f7edaf122394a5074ad9c77b554629560322f5fc70c29a6b39"
+  sha256 "6cfce5267b639fc9d2ef4cbbe299e6c304e0984f1e73f6977debdad6f92af343"
+
 
   def install
     bin.install "funzzy"
