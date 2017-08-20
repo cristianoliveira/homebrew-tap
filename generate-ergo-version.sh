@@ -1,6 +1,6 @@
 VERSION=$1
 
-BINARY_FILE_NAME="ergo-$VERSION-x86_64-apple-darwin.tar.gz"
+BINARY_FILE_NAME="ergo-$VERSION-darwin-amd64.tar.gz"
 REPO_URL="https://github.com/cristianoliveira/ergo/releases/download/$VERSION/$BINARY_FILE_NAME"
 
 wget $REPO_URL
@@ -11,7 +11,7 @@ echo "class Ergo < Formula
 
   desc 'Ergo Proxy - The local multiple services development made easy. No magic involved'
   homepage 'https://github.com/cristianoliveira/ergo'
-  url 'https://github.com/cristianoliveira/ergo/releases/download/$VERSION/ergo-$VERSION-x86_64-apple-darwin.tar.gz'
+  url '$REPO_URL'
   version '$VERSION'
   sha256 '$SHASUM'
 
