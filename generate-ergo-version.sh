@@ -23,4 +23,4 @@ echo "class Ergo < Formula
 end" > ergo.rb
 
 git add ergo.rb
-git commit -v "chore: version $VERSION"
+git commit -m "chore: version $VERSION"
