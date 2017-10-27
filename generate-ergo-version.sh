@@ -1,4 +1,4 @@
-VERSION=`curl https://raw.githubusercontent.com/cristianoliveira/ergo/master/.version`
+VERSION=`curl https://api.github.com/repos/cristianoliveira/ergo/releases/latest | jq .tag_name`
 
 BINARY_FILE_NAME="ergo-$VERSION-darwin-amd64.tar.gz"
 REPO_URL="https://github.com/cristianoliveira/ergo/releases/download/$VERSION/$BINARY_FILE_NAME"
