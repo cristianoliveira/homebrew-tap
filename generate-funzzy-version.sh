@@ -1,26 +1,27 @@
-VERSION=$1
+#!/bin/sh
 
-BINARY_FILE_NAME="funzzy-$VERSION-x86_64-apple-darwin.tar.gz"
-REPO_URL="https://github.com/cristianoliveira/funzzy/releases/download/$VERSION/$BINARY_FILE_NAME"
+VERSION=$(curl -sf https://api.github.com/repos/cristianoliveira/funzzy/releases/latest | jq .tag_name -r | cut -c 2-)
 
-wget $REPO_URL
+BINARY_FILE_NAME="funzzy-v$VERSION-x86_64-apple-darwin.tar.gz"
+REPO_URL="https://github.com/cristianoliveira/funzzy/releases/download/v$VERSION/$BINARY_FILE_NAME"
 
-SHASUM=`shasum -a 256 $BINARY_FILE_NAME | grep -o '\w*' `
+wget -q --show-progress "$REPO_URL" -O "$BINARY_FILE_NAME"
 
-echo "class Funzzy < Formula
+SHASUM=$(shasum -a 256 "$BINARY_FILE_NAME" | grep -o '\w*')
 
-  desc 'The yet another fancy watcher'
-  homepage 'https://github.com/cristianoliveira/funzzy'
-  url 'https://github.com/cristianoliveira/funzzy/releases/download/$VERSION/funzzy-$VERSION-x86_64-apple-darwin.tar.gz'
-  version '$VERSION'
-  sha256 '$SHASUM'
-
+cat << EOF > funzzy.rb
+class Funzzy < Formula
+  desc "The yet another fancy watcher"
+  homepage "https://github.com/cristianoliveira/funzzy"
+  url "$REPO_URL"
+  version "$VERSION"
+  sha256 "$SHASUM"
 
   def install
-    bin.install 'funzzy'
+    bin.install "funzzy"
   end
-
-end" > funzzy.rb
+end
+EOF
 
 git add funzzy.rb
-git commit -v "chore: version $VERSION"
+git commit -m "chore: version $VERSION"
