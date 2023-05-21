@@ -2,9 +2,9 @@ class Funzzy < Formula
 
   desc 'The yet another fancy watcher'
   homepage 'https://github.com/cristianoliveira/funzzy'
-  url 'https://github.com/cristianoliveira/funzzy/releases/download/v0.3.3/funzzy-v0.3.3-x86_64-apple-darwin.tar.gz'
-  version 'v0.3.3'
-  sha256 '32531a489ac50b4ec9321b4fbe6d246b61d18ee87f6b86638cfe5d2ed72ccb6d'
+  url 'https://github.com/cristianoliveira/funzzy/releases/download/v0.5.0/funzzy-v0.5.0-x86_64-apple-darwin.tar.gz'
+  version 'v0.5.0'
+  sha256 '915f2b559d3147537a06ad9eb4cb93047775455067754c0c9c0608e2a601421e'
 
 
   def install

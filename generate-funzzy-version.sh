@@ -5,7 +5,10 @@ REPO_URL="https://github.com/cristianoliveira/funzzy/releases/download/$VERSION/
 
 wget $REPO_URL
 
-SHASUM=`shasum -a 256 $BINARY_FILE_NAME | grep -o '\w*' `
+# Generate shasum and collect first column
+SHASUM=`shasum -a 256 $BINARY_FILE_NAME | grep -o '\w.*$' | awk '{print $1}'`
+
+echo "shasum: $SHASUM"
 
 echo "class Funzzy < Formula
 
