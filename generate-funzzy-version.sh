@@ -29,4 +29,4 @@ echo "class Funzzy < Formula
 end" > funzzy.rb
 
 git add funzzy.rb
-git commit -v "chore(funzzy): version $VERSION"
+git commit -m "chore(funzzy): version $VERSION"
