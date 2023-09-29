@@ -1,4 +1,6 @@
-VERSION=$1
+CARGO_VERSION="$(curl https://raw.githubusercontent.com/cristianoliveira/funzzy/master/Cargo.toml | grep version | awk -F\" '{print $2}')"
+VERSION="v${1:-$CARGO_VERSION}"
+
 
 BINARY_FILE_NAME="funzzy-$VERSION-x86_64-apple-darwin.tar.gz"
 REPO_URL="https://github.com/cristianoliveira/funzzy/releases/download/$VERSION/$BINARY_FILE_NAME"
@@ -21,9 +23,10 @@ echo "class Funzzy < Formula
 
   def install
     bin.install 'funzzy'
+    bin.install 'fzz'
   end
 
 end" > funzzy.rb
 
 git add funzzy.rb
-git commit -v "chore: version $VERSION"
+git commit -v "chore(funzzy): version $VERSION"
