@@ -5,7 +5,7 @@ REPO_URL="https://github.com/cristianoliveira/ergo/releases/download/$VERSION/$B
 
 wget $REPO_URL
 
-SHASUM=`shasum -a 256 $BINARY_FILE_NAME | grep -o '\w*' `
+SHASUM=`shasum -a 256 $BINARY_FILE_NAME | tee ergo.log | awk '{print $1}'`
 
 echo "class Ergo < Formula
 

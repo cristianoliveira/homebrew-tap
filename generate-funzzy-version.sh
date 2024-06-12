@@ -8,7 +8,7 @@ REPO_URL="https://github.com/cristianoliveira/funzzy/releases/download/$VERSION/
 wget $REPO_URL
 
 # Generate shasum and collect first column
-SHASUM=`shasum -a 256 $BINARY_FILE_NAME | grep -o '\w.*$' | awk '{print $1}'`
+SHASUM=`shasum -a 256 $BINARY_FILE_NAME | tee funzzy.log | awk '{print $1}'`
 
 echo "shasum: $SHASUM"
 
