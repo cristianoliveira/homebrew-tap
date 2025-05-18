@@ -1,6 +1,6 @@
-class AeroSpaceMarks < Formula
+class AerospaceMarks < Formula
 
-  desc 'This is an cli for AeroSpace WM to manage marks on windows.'
+  desc 'AeroSpace marks - Vim like marks for AeroSpace WM'
   homepage 'https://github.com/cristianoliveira/aerospace-marks'
   url 'https://github.com/cristianoliveira/aerospace-marks/releases/download/v0.0.1/aerospace-marks-v0.0.1-darwin-amd64.tar.gz'
   version 'v0.0.1'

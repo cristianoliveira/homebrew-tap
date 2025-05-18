@@ -9,9 +9,9 @@ wget $REPO_URL
 
 SHASUM=`shasum -a 256 $BINARY_FILE_NAME | tee aerospace-marks.log | awk '{print $1}'`
 
-echo "class AeroSpaceMarks < Formula
+echo "class AerospaceMarks < Formula
 
-  desc 'This is an cli for AeroSpace WM to manage marks on windows.'
+  desc 'AeroSpace marks - Vim like marks for AeroSpace WM'
   homepage 'https://github.com/cristianoliveira/aerospace-marks'
   url '$REPO_URL'
   version '$VERSION'
