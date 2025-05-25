@@ -15,7 +15,7 @@ wget $ARM_REPO_URL
 AMD_SHASUM=`shasum -a 256 $AMD_BINARY_FILE_NAME | tee aerospace-scratchpad.log | awk '{print $1}'`
 ARM_SHASUM=`shasum -a 256 $ARM_BINARY_FILE_NAME | tee aerospace-scratchpad.log | awk '{print $1}'`
 
-echo "class AerospaceMarks < Formula
+echo "class AerospaceScratchpad < Formula
 
   desc 'AeroSpace scratchpad - Scratchpad for AeroSpace WM'
   homepage 'https://github.com/cristianoliveira/aerospace-scratchpad'

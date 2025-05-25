@@ -1,4 +1,4 @@
-class AerospaceMarks < Formula
+class AerospaceScratchpad < Formula
 
   desc 'AeroSpace scratchpad - Scratchpad for AeroSpace WM'
   homepage 'https://github.com/cristianoliveira/aerospace-scratchpad'
