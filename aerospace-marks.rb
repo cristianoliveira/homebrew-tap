@@ -2,14 +2,14 @@ class AerospaceMarks < Formula
 
   desc 'AeroSpace marks - Vim like marks for AeroSpace WM'
   homepage 'https://github.com/cristianoliveira/aerospace-marks'
-  version 'v0.0.1'
+  version 'v0.0.2'
 
   if Hardware::CPU.arm?
-    url 'https://github.com/cristianoliveira/aerospace-marks/releases/download/v0.0.1/aerospace-marks-v0.0.1-darwin-arm64.tar.gz'
-    sha256 'b919322a925dac6bfdc9f2990a29ef9fc60ed7080d8ede2efb23242bfe4d2237'
+    url 'https://github.com/cristianoliveira/aerospace-marks/releases/download/v0.0.2/aerospace-marks-v0.0.2-darwin-arm64.tar.gz'
+    sha256 '09a507c2dd98cf059f3bcbbd5f65a3b8b18fb62a45b5d38f814fd32ab1ce5330'
   else
-    url 'https://github.com/cristianoliveira/aerospace-marks/releases/download/v0.0.1/aerospace-marks-v0.0.1-darwin-amd64.tar.gz'
-    sha256 'c584f9ad7aaef76e31b0ee9ff38cdd4739217341d2dac3cf585117c2e7afca08'
+    url 'https://github.com/cristianoliveira/aerospace-marks/releases/download/v0.0.2/aerospace-marks-v0.0.2-darwin-amd64.tar.gz'
+    sha256 'a176836c33729200ff3b0fbe81d9302e8735d8640b2df7a372ebb9cafc7f4e9e'
   end
 
   def install
