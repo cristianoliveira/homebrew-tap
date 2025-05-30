@@ -24,3 +24,5 @@ end" > ergo.rb
 
 git add ergo.rb
 git commit -m "chore: version $VERSION"
+
+rm $BINARY_FILE_NAME

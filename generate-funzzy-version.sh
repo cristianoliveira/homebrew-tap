@@ -30,3 +30,5 @@ end" > funzzy.rb
 
 git add funzzy.rb
 git commit -m "chore(funzzy): version $VERSION"
+
+rm $BINARY_FILE_NAME

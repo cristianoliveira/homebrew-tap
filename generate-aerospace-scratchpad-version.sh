@@ -41,3 +41,6 @@ end" > aerospace-scratchpad.rb
 
 git add aerospace-scratchpad.rb
 git commit -m "chore: aerospace-scratchpad version $VERSION"
+
+rm $AMD_BINARY_FILE_NAME
+rm $ARM_BINARY_FILE_NAME

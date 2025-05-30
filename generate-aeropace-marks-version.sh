@@ -39,3 +39,6 @@ end" > aerospace-marks.rb
 
 git add aerospace-marks.rb
 git commit -m "chore: aerospace-marks version $VERSION"
+
+rm $AMD_BINARY_FILE_NAME
+rm $ARM_BINARY_FILE_NAME
