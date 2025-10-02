@@ -85,7 +85,8 @@ fails. Arguments after `--` are forwarded to each invocation.
 ## After Running the Script
 
 - Review the changes: `git status` and `git diff`.
-- Commit once satisfied: `git commit -am "chore(<formula>): bump to <tag>"`.
+- A commit `chore(<formula>): bump to <tag>` is created automatically when the git index is clean; inspect it with `git show`.
+- If the script skipped the commit (e.g. existing staged changes), commit manually.
 - Push and open a pull request as usual.
 
 ## Troubleshooting

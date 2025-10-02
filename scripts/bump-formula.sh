@@ -137,6 +137,7 @@ require_tool curl
 require_tool shasum
 require_tool jq
 require_tool perl
+require_tool git
 
 github_api_request() {
   local url="$1"
@@ -234,6 +235,7 @@ for arch in "${asset_arches[@]}"; do
 done
 
 versioned_formula_path=""
+versioned_formula_file=""
 if [[ -n "$current_version_core" ]]; then
   IFS='.' read -r current_major current_minor _ <<< "$current_version_core"
   IFS='.' read -r new_major new_minor _ <<< "$version_core"
@@ -347,4 +349,30 @@ if [[ $RUN_TESTS -eq 1 ]]; then
   fi
 fi
 
-log_info "Next steps: review git diff and commit changes manually"
+commit_message="chore(${FORMULA}): bump to ${release_tag}"
+
+if git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if git -C "$REPO_ROOT" diff --cached --quiet; then
+    files_to_add=("$formula_file")
+    if [[ -n "$versioned_formula_file" && -e "$versioned_formula_path" ]]; then
+      files_to_add+=("$versioned_formula_file")
+    fi
+
+    git -C "$REPO_ROOT" add -- "${files_to_add[@]}"
+
+    if git -C "$REPO_ROOT" diff --cached --quiet; then
+      log_warn "No staged changes detected after adding files; skipping auto-commit"
+    else
+      log_info "Creating commit: ${commit_message}"
+      if git -C "$REPO_ROOT" commit -m "$commit_message"; then
+        log_info "Created commit '${commit_message}'"
+      else
+        log_warn "git commit failed; review changes and commit manually"
+      fi
+    fi
+  else
+    log_warn "Existing staged changes detected; skipping auto-commit"
+  fi
+else
+  log_warn "Repository at ${REPO_ROOT} is not a git repository; skipping auto-commit"
+fi
