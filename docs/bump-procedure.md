@@ -82,6 +82,13 @@ This helper iterates over every manifest entry and delegates to
 `bump-formula.sh`. Pass `--continue-on-error` to attempt all formulae even if one
 fails. Arguments after `--` are forwarded to each invocation.
 
+## GitHub Actions
+
+- Trigger `Bump Formula` via the Actions tab.
+- Choose a specific manifest key or `all` to run every entry.
+- The workflow runs the same bump scripts, pushes a branch, and opens a PR automatically.
+- When no releases changed, the run exits without opening a PR.
+
 ## After Running the Script
 
 - Review the changes: `git status` and `git diff`.

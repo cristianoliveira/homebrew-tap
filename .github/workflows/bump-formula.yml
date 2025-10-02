@@ -1,0 +1,112 @@
+name: Bump Formula
+
+on:
+  workflow_dispatch:
+    inputs:
+      formula:
+        description: Formula key from formulae.json or default "all"
+        required: true
+        default: all
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Record base commit
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare branch
+        id: branch
+        env:
+          FORMULA: ${{ github.event.inputs.formula }}
+        run: |
+          ts=$(date -u +%Y%m%d%H%M%S)
+          sanitized=${FORMULA//[^a-zA-Z0-9._-]/-}
+          branch="bump/${sanitized}/${ts}"
+          git checkout -b "$branch"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Run bump script
+        env:
+          FORMULA: ${{ github.event.inputs.formula }}
+        run: |
+          set -euo pipefail
+          if [[ "$FORMULA" == "all" ]]; then
+            ./scripts/bump-all.sh
+          else
+            ./scripts/bump-formula.sh --formula "$FORMULA"
+          fi
+
+      - name: Verify clean working tree
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "Working tree not clean after bump" >&2
+            git status --short >&2
+            exit 1
+          fi
+
+      - name: Detect updates
+        id: detect
+        run: |
+          before="${{ steps.base.outputs.sha }}"
+          after=$(git rev-parse HEAD)
+          if [[ "$before" == "$after" ]]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          title=$(git log -1 --pretty=%s)
+          body=$(git log --pretty='- %s' "${before}..HEAD")
+          {
+            echo "title<<EOF"
+            printf '%s\n' "$title"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          {
+            echo "body<<EOF"
+            printf '%s\n' "$body"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Push branch
+        if: steps.detect.outputs.has_changes == 'true'
+        run: git push --set-upstream origin "${{ steps.branch.outputs.name }}"
+
+      - name: Create pull request
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="${{ steps.detect.outputs.title }}"
+          if [[ -z "$title" ]]; then
+            title="Automated formula bump"
+          fi
+          body="${{ steps.detect.outputs.body }}"
+          if [[ -z "$body" ]]; then
+            body="Automated update triggered via workflow dispatch."
+          fi
+          gh pr create \
+            --base master \
+            --head "${{ steps.branch.outputs.name }}" \
+            --title "$title" \
+            --body "$body"
+
+      - name: No updates detected
+        if: steps.detect.outputs.has_changes != 'true'
+        run: echo "No release changes detected; skipping PR."

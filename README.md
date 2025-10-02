@@ -12,6 +12,9 @@ automated via bash scripts under `scripts/`:
 - `scripts/bump-all.sh` loops over every entry in the manifest and runs the
   single-formula workflow (pass `--` followed by any extra `bump-formula.sh`
   flags).
+- The `Bump Formula` GitHub Action (Actions tab) wraps the same scripts,
+  pushes a branch, and opens a pull request automatically when new releases are
+  detected.
 
 See `docs/bump-procedure.md` for detailed instructions, prerequisites, and
 troubleshooting notes.
