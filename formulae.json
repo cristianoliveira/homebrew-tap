@@ -1,0 +1,73 @@
+{
+  "aerospace-scratchpad": {
+    "ruby_class": "AerospaceScratchpad",
+    "formula_file": "aerospace-scratchpad.rb",
+    "repo": "cristianoliveira/aerospace-scratchpad",
+    "tag_prefix": "v",
+    "desc": "AeroSpace scratchpad - Scratchpad for AeroSpace WM",
+    "homepage": "https://github.com/cristianoliveira/aerospace-scratchpad",
+    "assets": {
+      "arm64": "aerospace-scratchpad-{{VERSION}}-darwin-arm64.tar.gz",
+      "amd64": "aerospace-scratchpad-{{VERSION}}-darwin-amd64.tar.gz"
+    },
+    "binaries": [
+      "aerospace-scratchpad"
+    ],
+    "test": {
+      "binary": "aerospace-scratchpad",
+      "args": [
+        "--version"
+      ]
+    }
+  },
+  "aerospace-marks": {
+    "ruby_class": "AerospaceMarks",
+    "formula_file": "aerospace-marks.rb",
+    "repo": "cristianoliveira/aerospace-marks",
+    "tag_prefix": "v",
+    "desc": "AeroSpace marks - Vim like marks for AeroSpace WM",
+    "homepage": "https://github.com/cristianoliveira/aerospace-marks",
+    "assets": {
+      "arm64": "aerospace-marks-{{VERSION}}-darwin-arm64.tar.gz",
+      "amd64": "aerospace-marks-{{VERSION}}-darwin-amd64.tar.gz"
+    },
+    "binaries": [
+      "aerospace-marks"
+    ],
+    "test": {
+      "binary": "aerospace-marks",
+      "args": [
+        "--version"
+      ]
+    }
+  },
+  "ergo": {
+    "ruby_class": "Ergo",
+    "formula_file": "ergo.rb",
+    "repo": "cristianoliveira/ergo",
+    "tag_prefix": "v",
+    "desc": "Ergo Proxy - The local multiple services development made easy. No magic involved",
+    "homepage": "https://github.com/cristianoliveira/ergo",
+    "assets": {
+      "amd64": "ergo-{{VERSION}}-darwin-amd64.tar.gz"
+    },
+    "binaries": [
+      "ergo"
+    ]
+  },
+  "funzzy": {
+    "ruby_class": "Funzzy",
+    "formula_file": "funzzy.rb",
+    "repo": "cristianoliveira/funzzy",
+    "tag_prefix": "v",
+    "desc": "The yet another fancy watcher",
+    "homepage": "https://github.com/cristianoliveira/funzzy",
+    "assets": {
+      "amd64": "funzzy-{{VERSION}}-x86_64-apple-darwin.tar.gz"
+    },
+    "binaries": [
+      "funzzy",
+      "fzz"
+    ]
+  }
+}
