@@ -2,14 +2,14 @@ class AerospaceScratchpad < Formula
 
   desc "AeroSpace scratchpad - Scratchpad for AeroSpace WM"
   homepage "https://github.com/cristianoliveira/aerospace-scratchpad"
-  version 'v0.5.0'
+  version 'v0.5.1'
 
   if Hardware::CPU.arm?
-    url 'https://github.com/cristianoliveira/aerospace-scratchpad/releases/download/v0.5.0/aerospace-scratchpad-v0.5.0-darwin-arm64.tar.gz'
-    sha256 '00dc87284e98a615d9c063a04fbab4673c29ef58e3bb7bbfcf789272344ad503'
+    url 'https://github.com/cristianoliveira/aerospace-scratchpad/releases/download/v0.5.1/aerospace-scratchpad-v0.5.1-darwin-arm64.tar.gz'
+    sha256 '5018b6183008f19e3582850b43e5734c28456b1790fa40bba3907befa323b23f'
   else
-    url 'https://github.com/cristianoliveira/aerospace-scratchpad/releases/download/v0.5.0/aerospace-scratchpad-v0.5.0-darwin-amd64.tar.gz'
-    sha256 'a6684a63fc250f2201906016439545a5e78f89060b4148cbd139d779e998fb94'
+    url 'https://github.com/cristianoliveira/aerospace-scratchpad/releases/download/v0.5.1/aerospace-scratchpad-v0.5.1-darwin-amd64.tar.gz'
+    sha256 '3b45e6f012cb9467052f9ca779301e0a3df01a777aae6385f1e76e6a33066e43'
   end
 
   def install
