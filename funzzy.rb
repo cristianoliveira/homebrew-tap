@@ -1,11 +1,11 @@
 class Funzzy < Formula
 
-  desc 'The yet another fancy watcher'
-  homepage 'https://github.com/cristianoliveira/funzzy'
-  url 'https://github.com/cristianoliveira/funzzy/releases/download/v1.5.0/funzzy-v1.5.0-x86_64-apple-darwin.tar.gz'
-  version 'v1.5.0'
-  sha256 '3f782faf01da3083d629d464af81f784804d2253e0f07add28ed4a3160cd02e2'
+  desc "The yet another fancy watcher"
+  homepage "https://github.com/cristianoliveira/funzzy"
+  version 'v2.0.0'
 
+  url 'https://github.com/cristianoliveira/funzzy/releases/download/v2.0.0/funzzy-v2.0.0-x86_64-darwin.tar.gz'
+  sha256 '7d7422e7469019111e2e3cf1b6e6d713895320019c9146cb09bcb59dfec1974c'
 
   def install
     bin.install 'funzzy'
