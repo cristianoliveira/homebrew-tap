@@ -63,7 +63,7 @@
     "desc": "The yet another fancy watcher",
     "homepage": "https://github.com/cristianoliveira/funzzy",
     "assets": {
-      "amd64": "funzzy-{{VERSION}}-x86_64-apple-darwin.tar.gz"
+      "amd64": "funzzy-{{VERSION}}-x86_64-darwin.tar.gz"
     },
     "binaries": [
       "funzzy",
