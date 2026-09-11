@@ -69,5 +69,47 @@
       "funzzy",
       "fzz"
     ]
+  },
+  "figma-cli": {
+    "ruby_class": "FigmaCli",
+    "formula_file": "figma-cli.rb",
+    "repo": "cristianoliveira/figma-cli",
+    "tag_prefix": "v",
+    "desc": "Figma CLI made for coding agents",
+    "homepage": "https://github.com/cristianoliveira/figma-cli",
+    "assets": {
+      "arm64": "figma_{{VERSION_NO_PREFIX}}_darwin_arm64.tar.gz",
+      "amd64": "figma_{{VERSION_NO_PREFIX}}_darwin_amd64.tar.gz"
+    },
+    "binaries": [
+      "figma"
+    ],
+    "test": {
+      "binary": "figma",
+      "args": [
+        "--help"
+      ]
+    }
+  },
+  "pxp": {
+    "ruby_class": "Pxp",
+    "formula_file": "pxp.rb",
+    "repo": "cristianoliveira/pxp",
+    "tag_prefix": "v",
+    "desc": "Pixel perfect CLI to harness image comparison",
+    "homepage": "https://github.com/cristianoliveira/pxp",
+    "assets": {
+      "arm64": "pxp_darwin_arm64.tar.gz",
+      "amd64": "pxp_darwin_amd64.tar.gz"
+    },
+    "binaries": [
+      "pxp"
+    ],
+    "test": {
+      "binary": "pxp",
+      "args": [
+        "--help"
+      ]
+    }
   }
 }
