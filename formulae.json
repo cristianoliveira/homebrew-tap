@@ -111,5 +111,26 @@
         "--help"
       ]
     }
+  },
+  "jeq": {
+    "ruby_class": "Jeq",
+    "formula_file": "jeq.rb",
+    "repo": "cristianoliveira/jeq",
+    "tag_prefix": "v",
+    "desc": "Typed judgment CLI for scripts, agents, and systems",
+    "homepage": "https://github.com/cristianoliveira/jeq",
+    "assets": {
+      "arm64": "jeq_{{VERSION_NO_PREFIX}}_darwin_arm64.tar.gz",
+      "amd64": "jeq_{{VERSION_NO_PREFIX}}_darwin_amd64.tar.gz"
+    },
+    "binaries": [
+      "jeq"
+    ],
+    "test": {
+      "binary": "jeq",
+      "args": [
+        "--help"
+      ]
+    }
   }
 }
