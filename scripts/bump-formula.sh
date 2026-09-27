@@ -307,7 +307,7 @@ generate_formula() {
 
     if [[ ${#test_args[@]} -gt 0 ]]; then
       printf "\n  test do\n"
-      printf "    system \"#\{bin\}/%s\"" "$test_binary"
+      printf '    system "#{bin}/%s"' "$test_binary"
       for arg in "${test_args[@]}"; do
         printf ", \"%s\"" "$arg"
       done

@@ -17,7 +17,7 @@ class Jeq < Formula
   end
 
   test do
-    system "#\{bin\}/jeq", "--help"
+    system "#{bin}/jeq", "--help"
   end
 
 end
