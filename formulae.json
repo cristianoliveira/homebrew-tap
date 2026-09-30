@@ -1,4 +1,25 @@
 {
+  "aerospace-gestures": {
+    "ruby_class": "AerospaceGestures",
+    "formula_file": "aerospace-gestures.rb",
+    "repo": "cristianoliveira/aerospace-gestures",
+    "tag_prefix": "v",
+    "desc": "Map macOS trackpad swipes to commands",
+    "homepage": "https://github.com/cristianoliveira/aerospace-gestures",
+    "assets": {
+      "arm64": "aerospace-gestures-{{VERSION}}-darwin-arm64.tar.gz",
+      "amd64": "aerospace-gestures-{{VERSION}}-darwin-amd64.tar.gz"
+    },
+    "binaries": [
+      "aerospace-gestures"
+    ],
+    "test": {
+      "binary": "aerospace-gestures",
+      "args": [
+        "--help"
+      ]
+    }
+  },
   "aerospace-scratchpad": {
     "ruby_class": "AerospaceScratchpad",
     "formula_file": "aerospace-scratchpad.rb",
