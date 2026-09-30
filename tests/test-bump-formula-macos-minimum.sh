@@ -63,16 +63,52 @@ run_bump() {
   "$fixture/scripts/bump-formula.sh" --formula sample --version "$1"
 }
 
+assert_dependencies() {
+  ruby - "$fixture/sample.rb" "${1:-}" <<'RUBY'
+module Hardware
+  module CPU
+    def self.arm?
+      true
+    end
+  end
+end
+
+class Formula
+  class << self
+    attr_reader :dependencies
+
+    def inherited(subclass)
+      subclass.instance_variable_set(:@dependencies, [])
+    end
+
+    def desc(_value); end
+    def homepage(_value); end
+    def version(_value); end
+    def url(_value); end
+    def sha256(_value); end
+    def test(&_block); end
+
+    def depends_on(**requirements)
+      @dependencies << requirements
+    end
+  end
+end
+
+load ARGV.fetch(0)
+expected_minimum = ARGV.fetch(1)
+expected = expected_minimum.empty? ? [] : [{ macos: expected_minimum.to_sym }]
+actual = Sample.dependencies
+abort "Expected #{expected.inspect}, got #{actual.inspect}" unless actual == expected
+RUBY
+}
+
 run_bump v0.1.1 >/dev/null
-grep -Fq '  depends_on macos: :ventura' "$fixture/sample.rb"
+assert_dependencies ventura
 
 jq 'del(.sample.macos_minimum)' "$fixture/formulae.json" > "$tmp_dir/formulae.json"
 mv "$tmp_dir/formulae.json" "$fixture/formulae.json"
 run_bump v0.1.2 >/dev/null
-if grep -Fq 'depends_on macos:' "$fixture/sample.rb"; then
-  printf 'Unexpected macOS dependency for a formula without macos_minimum\n' >&2
-  exit 1
-fi
+assert_dependencies
 
 jq --arg minimum 'ventura; puts("unsafe")' '.sample.macos_minimum = $minimum' \
   "$fixture/formulae.json" > "$tmp_dir/formulae.json"
