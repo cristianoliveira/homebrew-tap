@@ -38,6 +38,11 @@ and describes how to generate its Ruby definition:
 }
 ```
 
+The optional `macos_minimum` field emits a Homebrew OS dependency such as
+`depends_on macos: :ventura`. Supported values are `ventura`, `sonoma`,
+`sequoia`, and `tahoe`; set it when the release binary requires a minimum macOS
+version.
+
 Placeholders supported in asset templates:
 
 - `{{VERSION}}` – the release tag as published (e.g. `v0.2.0`).

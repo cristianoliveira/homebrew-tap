@@ -4,6 +4,7 @@
     "formula_file": "aerospace-gestures.rb",
     "repo": "cristianoliveira/aerospace-gestures",
     "tag_prefix": "v",
+    "macos_minimum": "ventura",
     "desc": "Map macOS trackpad swipes to commands",
     "homepage": "https://github.com/cristianoliveira/aerospace-gestures",
     "assets": {

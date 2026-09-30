@@ -3,6 +3,7 @@ class AerospaceGestures < Formula
   desc "Map macOS trackpad swipes to commands"
   homepage "https://github.com/cristianoliveira/aerospace-gestures"
   version 'v0.1.0'
+  depends_on macos: :ventura
 
   if Hardware::CPU.arm?
     url 'https://github.com/cristianoliveira/aerospace-gestures/releases/download/v0.1.0/aerospace-gestures-v0.1.0-darwin-arm64.tar.gz'

@@ -119,6 +119,12 @@ if [[ ${#binaries[@]} -eq 0 ]]; then
 fi
 
 test_binary="$(config_get_string '.test.binary // ""')"
+macos_minimum="$(config_get_string '.macos_minimum // ""')"
+case "$macos_minimum" in
+  ""|ventura|sonoma|sequoia|tahoe) ;;
+  *) die "Unsupported macOS minimum '$macos_minimum' for ${FORMULA}" ;;
+esac
+
 test_args=()
 while IFS= read -r arg; do
   [[ -z "$arg" ]] && continue
@@ -270,7 +276,11 @@ generate_formula() {
     printf "class %s < Formula\n\n" "$ruby_class"
     printf "  desc \"%s\"\n" "$ruby_desc"
     printf "  homepage \"%s\"\n" "$ruby_homepage"
-    printf "  version '%s'\n\n" "$release_tag"
+    printf "  version '%s'\n" "$release_tag"
+    if [[ -n "$macos_minimum" ]]; then
+      printf "  depends_on macos: :%s\n" "$macos_minimum"
+    fi
+    printf "\n"
 
     if [[ ${#asset_names[@]} -eq 2 && " ${asset_names[*]} " == *" arm64 "* && " ${asset_names[*]} " == *" amd64 "* ]]; then
       local arm_index=-1

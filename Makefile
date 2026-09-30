@@ -8,6 +8,10 @@ help: ## Lists the available commands. Add a comment with '##' to describe a com
 ergo: ## Generate ergo latest release version
 	sh ./generate-ergo-version.sh
 
+.PHONY: test-bump-formula
+test-bump-formula: ## Test formula generation without network or Homebrew installs
+	bash ./tests/test-bump-formula-macos-minimum.sh
+
 .PHONY: funzzy
 funzzy: ## Generate funzzy latest release version
 	sh ./generate-funzzy-version.sh
