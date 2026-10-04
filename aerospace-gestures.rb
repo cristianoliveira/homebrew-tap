@@ -2,15 +2,15 @@ class AerospaceGestures < Formula
 
   desc "Map macOS trackpad swipes to commands"
   homepage "https://github.com/cristianoliveira/aerospace-gestures"
-  version 'v0.3.0'
+  version 'v0.4.0'
   depends_on macos: :ventura
 
   if Hardware::CPU.arm?
-    url 'https://github.com/cristianoliveira/aerospace-gestures/releases/download/v0.3.0/aerospace-gestures-v0.3.0-darwin-arm64.tar.gz'
-    sha256 '32e8153c6fcbe45844a4554b01a15c8740252f30528733a516cb85d09230c2fc'
+    url 'https://github.com/cristianoliveira/aerospace-gestures/releases/download/v0.4.0/aerospace-gestures-v0.4.0-darwin-arm64.tar.gz'
+    sha256 '5a068beafc4a21e159dc8a9cb0dfe54ed0c05e47f1ef611caf0dbdd7deb8f49e'
   else
-    url 'https://github.com/cristianoliveira/aerospace-gestures/releases/download/v0.3.0/aerospace-gestures-v0.3.0-darwin-amd64.tar.gz'
-    sha256 '6da0edeca682bb7e8cf50de013186518073481a3ad2179abe589d10df5c649ec'
+    url 'https://github.com/cristianoliveira/aerospace-gestures/releases/download/v0.4.0/aerospace-gestures-v0.4.0-darwin-amd64.tar.gz'
+    sha256 'cee1e5a479588711b90a95a4bc3f014ecaedb56aeb9e1dee9474cbe8639cf417'
   end
 
   def install
