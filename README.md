@@ -1,6 +1,21 @@
 # homebrew-tap
 Homebrew tap to distribute my apps.
 
+## Cafuné
+
+`cafune.rb` builds Cafuné from a checksum-verified source archive pinned to commit
+`45762fa1e10f99dcdc71b07f2637dba813742b6d`. It requires macOS 13+ and Xcode 16.4+
+for the build. The Swift dependencies use the committed resolution file.
+
+After this tap update is published, install with `brew install cristianoliveira/tap/cafune`.
+No service is started by the formula.
+
+Cafuné is intentionally excluded from `formulae.json` release-bump automation until
+its first renamed binary release is published. For now, update the source commit,
+version, and verified SHA-256 together. Later, add a `cafune` manifest entry with
+`cafune-{{VERSION}}-darwin-arm64.tar.gz` and `cafune-{{VERSION}}-darwin-amd64.tar.gz`
+assets containing the `cafune` executable.
+
 ## Bump Automation
 
 Formula metadata now lives in `formulae.json` and the update workflow is
